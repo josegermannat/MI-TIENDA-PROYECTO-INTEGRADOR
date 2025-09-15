@@ -15,7 +15,7 @@ const Products = () => {
             <SearchBar
                 onSearch={searchProducts}
                 value={searchTerm}
-                placeholder="Buscar por nombre, descripción o categoría..."
+                placeholder="Buscar por nombre"
                 className="products__search"/>
             <ProductGallery />
         </div>
