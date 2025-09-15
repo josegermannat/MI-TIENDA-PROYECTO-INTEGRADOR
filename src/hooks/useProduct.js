@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import productsApi from "../api/products.api.js";
 
 export const useProduct = () => {
-    const [ products, setProducts ] = useState([]);
+    const [ products, setProducts ] = useState();
     const [ filteredProducts, setFilteredProducts ] = useState([]);
     const [ searchTerm, setSearchTerm ] = useState("");
     const [ isLoading, setIsLoading ] = useState(false);
@@ -15,7 +15,6 @@ export const useProduct = () => {
         try {
             const data = await productsApi.fetchProducts();
             setProducts(data);
-            setFilteredProducts(data);
         } catch (error) {
             setProducts([]);
             setFilteredProducts([]);

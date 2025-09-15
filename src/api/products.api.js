@@ -1,5 +1,5 @@
 const KEY_PRODUCTS = "products";
-
+import productsData from "@/const/dataProducts";
 const generateId = (products) => {
     let maxId = 0;
 
@@ -14,9 +14,15 @@ const generateId = (products) => {
 
 const getProductsFromLocalStorage = () => {
     const data = localStorage.getItem(KEY_PRODUCTS);
+
+    if (!data) {
+        // Si no hay nada, guardar el array inicial
+        localStorage.setItem(KEY_PRODUCTS, JSON.stringify(productsData));
+        return productsData;
+    }
+
     return JSON.parse(data) || [];
 };
-
 const fetchProducts = () => {
     return new Promise((resolve) => {
         resolve(getProductsFromLocalStorage());
